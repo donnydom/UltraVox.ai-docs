@@ -1,12 +1,12 @@
 # Ultravox Research Documentation Index
 
-Synthesised technical research on the Ultravox voice AI API — compiled February 22, 2026 from official documentation.
+Synthesised technical research on the Ultravox voice AI API — compiled February 2026 from official documentation, Zhipu AI docs, academic papers, and production implementations.
 
 ---
 
 ## Files in This Research Package
 
-### 1. `TECHNICAL_RESEARCH.md` — Comprehensive Reference (1100+ lines)
+### 1. `TECHNICAL_RESEARCH.md` — Comprehensive API Reference (1100+ lines)
 Deep-dive implementation guide for developers building on Ultravox.
 
 **Sections:**
@@ -46,6 +46,56 @@ Fast lookup during development and production monitoring.
 - API Quick Facts
 
 **Best for:** Quick reference during development, production monitoring, configuration validation
+
+### 3. `GLM_4_6_MODEL_REFERENCE.md` — Model Architecture Deep Dive
+Everything about the GLM-4.6 LLM that powers Ultravox v0.7.
+
+**Sections:**
+- Model identity (357B params, 28.72B active, MoE, MIT license)
+- Ultravox audio-native architecture (Whisper encoder → projector → GLM-4.6)
+- What "no ASR" actually means
+- Why Ultravox switched from Llama 3.3 70B
+- GLM-4.6 vs Llama 3.3 70B comparison table
+- Benchmarks (IFEval 87.6%, CC-Bench vs Claude Sonnet 4)
+- Deployment options (API, self-hosting via HuggingFace)
+
+**Best for:** Understanding the model powering v0.7, architecture decisions, self-hosting
+
+### 4. `GLM_4_6_PROMPTING_GUIDE.md` — GLM-4.6 Prompting Best Practices
+How to prompt GLM-4.6 optimally for voice agent personas.
+
+**Sections:**
+- ChatML token format and system prompt structure
+- CATS framework (Context, Action, Tone, Structure)
+- Instruction following: the "less is more" principle
+- Negative constraints and how to write them reliably
+- Persona lock techniques (specificity, examples, identity anchoring)
+- Jailbreak susceptibility and mitigations
+- Tool/function calling format and best practices
+- Temperature guide (0.5–1.0 for voice)
+- Voice-specific behaviour (length, lists, rhythm, ElevenLabs tags)
+- Migration checklist: Llama → GLM-4.6
+- Quick reference cheat sheet
+
+**Best for:** Writing effective system prompts, persona design, model-specific optimisations
+
+### 5. `VOICE_PERSONA_DESIGN.md` — Production Persona Design Guide
+Architecture patterns for building production voice personas on Ultravox.
+
+**Sections:**
+- 5-layer persona architecture (operator lock → identity → behavior → mechanics → context)
+- System prompt structure and prompt length vs latency tradeoffs
+- Character-break prevention techniques
+- 4-level voice expression hierarchy
+- Tone, accent, and dialect design patterns
+- Multi-stage conversation architecture (stages vs inline instructions)
+- Tool integration for persona continuity (silent tool pattern, RAG naturalisation)
+- Production reliability (inactivity, silence handling, tool failure)
+- Persona patterns by type (customer service, companion, expert/coach)
+- **Complete reusable system prompt template**
+- Pre-launch and monitoring checklists
+
+**Best for:** Designing new voice personas from scratch, production readiness
 
 ---
 
